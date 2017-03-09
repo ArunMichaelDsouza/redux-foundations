@@ -2,10 +2,17 @@ import React, { Component } from 'react';
 
 class UserList extends Component {
 	render() {
-		console.log(this);
+		const { props } = this;
+
 		return (
 			<ul>
-				<li>test</li>
+				{
+					props.users.map((user) => {
+						return (
+							<li key={user.id}>{user.id}</li>
+						);
+					})
+				}
 			</ul>
 		);
 	}

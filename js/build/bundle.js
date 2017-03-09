@@ -10513,15 +10513,10 @@ var _usersReducer = __webpack_require__(96);
 
 var _usersReducer2 = _interopRequireDefault(_usersReducer);
 
-var _moviesReducer = __webpack_require__(95);
-
-var _moviesReducer2 = _interopRequireDefault(_moviesReducer);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var allReducers = (0, _redux.combineReducers)({
-	users: _usersReducer2.default,
-	movies: _moviesReducer2.default
+	users: _usersReducer2.default
 });
 
 exports.default = allReducers;
@@ -10566,33 +10561,7 @@ exports.connectAdvanced = _connectAdvanced2.default;
 exports.connect = _connect2.default;
 
 /***/ }),
-/* 95 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var moviesReducer = function moviesReducer() {
-	var movies = [{
-		id: 1,
-		movie: 'Logan'
-	}, {
-		id: 2,
-		movie: 'Deadpool'
-	}, {
-		id: 3,
-		movie: 'Avengers'
-	}];
-
-	return movies;
-};
-
-exports.default = moviesReducer;
-
-/***/ }),
+/* 95 */,
 /* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -24385,7 +24354,7 @@ var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var store = (0, _redux.createStore)(_index2.default);
+var store = (0, _redux.createStore)(_index2.default, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 _reactDom2.default.render(_react2.default.createElement(
 	_reactRedux.Provider,
@@ -24421,7 +24390,7 @@ var App = function App() {
 		_react2.default.createElement(
 			'h1',
 			null,
-			'test'
+			'User List'
 		),
 		_react2.default.createElement(_userListContainer2.default, null)
 	);
@@ -24467,15 +24436,19 @@ var UserList = function (_Component) {
 	_createClass(UserList, [{
 		key: 'render',
 		value: function render() {
-			console.log(this);
+			var props = this.props;
+
+
 			return _react2.default.createElement(
 				'ul',
 				null,
-				_react2.default.createElement(
-					'li',
-					null,
-					'test'
-				)
+				props.users.map(function (user) {
+					return _react2.default.createElement(
+						'li',
+						{ key: user.id },
+						user.id
+					);
+				})
 			);
 		}
 	}]);
