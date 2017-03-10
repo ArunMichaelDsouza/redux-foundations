@@ -9,7 +9,7 @@ class UserList extends Component {
 				{
 					props.users.map((user) => {
 						return (
-							<li key={user.id}>{user.id}</li>
+							<li onClick={props.selectUser.bind(null, user)} key={user.id}>{user.id}</li>
 						);
 					})
 				}
