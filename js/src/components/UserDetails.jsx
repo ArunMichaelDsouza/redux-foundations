@@ -1,10 +1,16 @@
 import React from 'react';
 
 const UserDetails = props => {
-	//console.log(props);
-	return (
-		<div>details</div>
-	)
+	const { selectedUser } = props,
+		template = selectedUser ? (
+			<div>
+				You selected <h4 style={{display: 'inline-block'}}>{selectedUser.name}</h4>
+			</div>
+		) : (
+			<div>Select a user...</div>	
+		);
+
+	return template;
 };
 
 export default UserDetails;

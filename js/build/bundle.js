@@ -10547,9 +10547,9 @@ var _userListContainer = __webpack_require__(99);
 
 var _userListContainer2 = _interopRequireDefault(_userListContainer);
 
-var _UserDetails = __webpack_require__(97);
+var _userDetailsContainer = __webpack_require__(226);
 
-var _UserDetails2 = _interopRequireDefault(_UserDetails);
+var _userDetailsContainer2 = _interopRequireDefault(_userDetailsContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10580,7 +10580,7 @@ var App = function (_Component) {
 					'User List'
 				),
 				_react2.default.createElement(_userListContainer2.default, null),
-				_react2.default.createElement(_UserDetails2.default, null)
+				_react2.default.createElement(_userDetailsContainer2.default, null)
 			);
 		}
 	}]);
@@ -10663,12 +10663,24 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var UserDetails = function UserDetails(props) {
-	//console.log(props);
-	return _react2.default.createElement(
+	var selectedUser = props.selectedUser,
+	    template = selectedUser ? _react2.default.createElement(
 		'div',
 		null,
-		'details'
+		'You selected ',
+		_react2.default.createElement(
+			'h4',
+			{ style: { display: 'inline-block' } },
+			selectedUser.name
+		)
+	) : _react2.default.createElement(
+		'div',
+		null,
+		'Select a user...'
 	);
+
+
+	return template;
 };
 
 exports.default = UserDetails;
@@ -24575,6 +24587,35 @@ exports.default = [{
 	id: 14,
 	name: 'Tarun'
 }];
+
+/***/ }),
+/* 226 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _redux = __webpack_require__(26);
+
+var _reactRedux = __webpack_require__(56);
+
+var _UserDetails = __webpack_require__(97);
+
+var _UserDetails2 = _interopRequireDefault(_UserDetails);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state) {
+	return {
+		selectedUser: state.users.selected
+	};
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(_UserDetails2.default);
 
 /***/ })
 /******/ ]);

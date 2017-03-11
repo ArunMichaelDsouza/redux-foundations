@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import UserList from '../containers/userListContainer';
-import UserDetails from '../components/UserDetails.jsx';
+import UserDetails from '../containers/userDetailsContainer';
 
 class App extends Component {
 	render() {
