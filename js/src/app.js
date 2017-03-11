@@ -4,29 +4,15 @@ import { createStore } from 'redux';
 import allReducers from './reducers/index';
 import { Provider } from 'react-redux';
 import App from './components/App.jsx';
+import users from './initUsers';
+
+const initialState = { users: { all: [], selected: null } };
 
 const store = createStore(
 	allReducers,
+	initialState,
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
-
-const users = [
-	{
-		id: 11,
-		name: 'Arun'
-	}, {
-		id: 12,
-		name: 'Karun'
-	},
-	{
-		id: 13,
-		name: 'Varun'
-	},
-	{
-		id: 14,
-		name: 'Tarun'
-	}
-];
 
 store.dispatch({ type: 'INIT_STORE', payload: users })
 

@@ -5,7 +5,7 @@ import { selectUser } from '../actions/userActions';
 
 const mapStateToProps = state => {
 	return {
-		users: state.users
+		users: state.users.all
 	}
 };
 

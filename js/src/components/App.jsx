@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UserList from '../containers/userListContainer';
+import UserDetails from '../components/UserDetails.jsx';
 
 class App extends Component {
 	render() {
@@ -7,6 +8,7 @@ class App extends Component {
 			<div>
 				<h1>User List</h1>
 				<UserList />
+				<UserDetails />
 			</div>
 		);
 	}
