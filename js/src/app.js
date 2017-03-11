@@ -10,6 +10,26 @@ const store = createStore(
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+const users = [
+	{
+		id: 11,
+		name: 'Arun'
+	}, {
+		id: 12,
+		name: 'Karun'
+	},
+	{
+		id: 13,
+		name: 'Varun'
+	},
+	{
+		id: 14,
+		name: 'Tarun'
+	}
+];
+
+store.dispatch({ type: 'INIT_STORE', payload: users })
+
 ReactDOM.render(
 	<Provider store={store}>
 		<App />
