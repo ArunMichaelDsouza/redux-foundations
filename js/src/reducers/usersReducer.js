@@ -4,6 +4,8 @@ const userReducer = (state={}, action) => {
 			return { ...state, 'all': action.payload };
 		case 'SELECT_USER':
 			return { ...state, 'selected': action.payload };
+		case 'FETCH_USERS':
+			return { ...state, 'usersFromApi': action.payload }
 		default:
 			return state;
 	}

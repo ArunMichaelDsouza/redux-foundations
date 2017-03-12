@@ -1,20 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import allReducers from './reducers/index';
 import { Provider } from 'react-redux';
 import App from './components/App.jsx';
 import users from './initUsers';
+import thunk from 'redux-thunk';
 
-const initialState = { users: { all: [], selected: null } };
+const initialState = { users: { all: [], usersFromApi: [], selected: null } };
 
-const store = createStore(
-	allReducers,
-	initialState,
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const composeEnhancers =
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+
+const enhancer = composeEnhancers(
+  applyMiddleware(thunk)
 );
+const store = createStore(allReducers, initialState, enhancer);
 
-store.dispatch({ type: 'INIT_STORE', payload: users })
+store.dispatch({ type: 'INIT_STORE', payload: users });
 
 ReactDOM.render(
 	<Provider store={store}>

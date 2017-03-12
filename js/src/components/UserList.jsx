@@ -13,6 +13,10 @@ const UserList = props => {
 					})
 				}
 			</ul>
+			<button style={{marginBottom: 10}} onClick={props.getUsersFromApi}>Get users from API</button>
+			{
+				props.usersFromApi.length ? (<div style={{marginBottom: 10}}>Fetched users from API!</div>) : <div></div>
+			}
 		</div>
 	);
 };
