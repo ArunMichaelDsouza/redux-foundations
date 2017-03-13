@@ -24617,13 +24617,17 @@ var _reduxThunk = __webpack_require__(253);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
+var _logger = __webpack_require__(254);
+
+var _logger2 = _interopRequireDefault(_logger);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var initialState = { users: { all: [], usersFromApi: [], selected: null } };
 
 var composeEnhancers = (typeof window === 'undefined' ? 'undefined' : _typeof(window)) === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : _redux.compose;
 
-var enhancer = composeEnhancers((0, _redux.applyMiddleware)(_reduxThunk2.default));
+var enhancer = composeEnhancers((0, _redux.applyMiddleware)(_reduxThunk2.default, _logger2.default));
 var store = (0, _redux.createStore)(_index2.default, initialState, enhancer);
 
 store.dispatch({ type: 'INIT_STORE', payload: _initUsers2.default });
@@ -26115,6 +26119,27 @@ var thunk = createThunkMiddleware();
 thunk.withExtraArgument = createThunkMiddleware;
 
 exports['default'] = thunk;
+
+/***/ }),
+/* 254 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var logger = function logger(store) {
+	return function (next) {
+		return function (action) {
+			console.info("Action fired - " + action.type);
+			next(action);
+		};
+	};
+};
+
+exports.default = logger;
 
 /***/ })
 /******/ ]);
